@@ -1,4 +1,4 @@
-package controllers;
+package controllers_tasklist;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Message;
-import utils.DBUtil;
+import models_tasklist.Tasklist;
+import utils_tasklist.DBUtil;
 
 /**
  * Servlet implementation class ShowServlet
@@ -25,7 +25,6 @@ public class ShowServlet extends HttpServlet {
      */
     public ShowServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -35,14 +34,14 @@ public class ShowServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         // 該当のIDのメッセージ1件のみをデータベースから取得
-        Message m = em.find(Message.class, Integer.parseInt(request.getParameter("id")));
+        Tasklist t = em.find(Tasklist.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
         // メッセージデータをリクエストスコープにセットしてshow.jspを呼び出す
-        request.setAttribute("message", m);
+        request.setAttribute("task", t);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/show.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/show.jsp");
         rd.forward(request, response);
     }
     }

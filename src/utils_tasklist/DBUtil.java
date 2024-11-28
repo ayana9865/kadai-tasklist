@@ -1,4 +1,4 @@
-package utils;
+package utils_tasklist;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,4 +1,4 @@
-package filters;
+package filters_tasklist;
 
 import java.io.IOException;
 
@@ -20,14 +20,12 @@ public class EncodingFilter implements Filter {
      * Default constructor.
      */
     public EncodingFilter() {
-        // TODO Auto-generated constructor stub
     }
 
     /**
      * @see Filter#destroy()
      */
     public void destroy() {
-        // TODO Auto-generated method stub
     }
 
     /**
@@ -36,10 +34,7 @@ public class EncodingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        // TODO Auto-generated method stub
-        // place your code here
 
-        // pass the request along the filter chain
         chain.doFilter(request, response);
     }
 
@@ -47,7 +42,6 @@ public class EncodingFilter implements Filter {
      * @see Filter#init(FilterConfig)
      */
     public void init(FilterConfig fConfig) throws ServletException {
-        // TODO Auto-generated method stub
     }
 
 }

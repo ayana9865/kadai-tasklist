@@ -1,14 +1,14 @@
-package models.validators;
+package models.validators_tasklist;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Message;
+import models_tasklist.Tasklist;
 
 
-public class MessageValidator {
+public class TasklistValidator {
     // バリデーションを実行する
-    public static List<String> validate(Message m) {
+    public static List<String> validate(Tasklist m) {
         List<String> errors = new ArrayList<String>();
 
         String title_error = validateTitle(m.getTitle());

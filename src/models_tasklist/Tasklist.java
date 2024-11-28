@@ -1,4 +1,4 @@
-package models;
+package models_tasklist;
 
 import java.sql.Timestamp;
 
@@ -14,17 +14,17 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
     @NamedQuery(
-        name = "getAllMessages",
-        query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
+        name = "getAllTasklists",
+        query = "SELECT m FROM Tasklist AS m ORDER BY m.id DESC"
     ),
     @NamedQuery(
-            name = "getMessagesCount",
-            query = "SELECT COUNT(m) FROM Message AS m"
+            name = "getTasklistsCount",
+            query = "SELECT COUNT(m) FROM Tasklist AS m"
             )
 })
 
-@Table(name = "messages")
-public class Message {
+@Table(name = "tasks")
+public class Tasklist {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

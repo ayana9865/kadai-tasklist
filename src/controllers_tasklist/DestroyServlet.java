@@ -1,4 +1,4 @@
-package controllers;
+package controllers_tasklist;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Message;
-import utils.DBUtil;
+import models_tasklist.Tasklist;
+import utils_tasklist.DBUtil;
 
 /**
  * Servlet implementation class DestroyServlet
@@ -24,7 +24,6 @@ public class DestroyServlet extends HttpServlet {
      */
     public DestroyServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -37,16 +36,16 @@ public class DestroyServlet extends HttpServlet {
 
             // セッションスコープからタスクのIDを取得して
             // 該当のIDのメッセージ1件のみをデータベースから取得
-            Message m = em.find(Message.class, (Integer)(request.getSession().getAttribute("message_id")));
+            Tasklist t = em.find(Tasklist.class, (Integer)(request.getSession().getAttribute("tasklist_id")));
 
             em.getTransaction().begin();
-            em.remove(m);       // データ削除
+            em.remove(t);       // データ削除
             em.getTransaction().commit();
             request.getSession().setAttribute("flush", "削除が完了しました。");
             em.close();
 
             // セッションスコープ上の不要になったデータを削除
-            request.getSession().removeAttribute("message_id");
+            request.getSession().removeAttribute("tasklist_id");
 
             // indexページへリダイレクト
             response.sendRedirect(request.getContextPath() + "/index");
